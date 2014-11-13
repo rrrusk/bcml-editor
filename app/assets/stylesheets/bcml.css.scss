@@ -1,0 +1,88 @@
+// Place all the styles related to the Bcml controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+*{
+	margin: 0;
+	padding: 0;
+	font-family:'Lucida Grande','Hiragino Kaku Gothic ProN',Meiryo, sans-serif;
+}
+html,body{
+	height: 100%;
+}
+.nav{
+	list-style-type: none;
+}
+#sidebar{
+	background: #333;
+	color: #00F;
+	float: left;
+	min-height: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 100;
+}
+#sidebar > .nav > li{
+	width: 100px;
+	height: 100px;
+	text-align: center;
+}
+.nav ul{
+	white-space: nowrap;
+	text-align: left;
+	display: none;
+	position: absolute;
+	top: -20px;
+	left: 100px;
+	list-style-type: none;
+	background: #333;
+	color: #00F;
+	padding: 5px;
+}
+.fa{
+	font-size: 70px;
+	color: #00F;
+}
+#main{
+	width: calc(100% - 100px);
+	margin-left: 100px;
+	min-height: 100%;
+	height: 100%;
+}
+#wrap{
+	min-height: 100%;
+	height: 100%;
+}
+#text, .CodeMirror{
+	width: 70%;
+	min-height: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	float: left;
+}
+#preview{
+	box-sizing: border-box;
+	width: 30%;
+	height: 100%;
+	float: left;
+}
+#tab{
+	width: 100%;
+}
+.tabs{
+	display: inline-block;
+	font-size: 16px;
+	padding: 0 12px;
+	line-height: 40px;
+	height: 40px;
+}
+.selected-tab{
+	border-bottom: #00F 4px solid;
+	box-sizing: border-box;
+}
+#previewtext{
+	height: calc(100% - 56px);
+	width: 100%;
+	overflow-y: scroll;
+	box-sizing: border-box;
+	padding: 8px;
+}

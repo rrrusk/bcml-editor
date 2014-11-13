@@ -1,0 +1,31 @@
+<div id="sidebar">
+	<ul class="nav">
+		<li>
+			<i class="fa fa-home"></i>
+		</li>
+		<li>
+			<i class="fa fa-pencil"></i>
+			<ul>
+				<li><a href="edit.html" class="ajax">テキストを編集</a></li>
+				<li>設定を変える</li>
+			</ul>
+		</li>
+		<li>
+			<i class="fa fa-file-text-o"></i>
+			<ul>
+				<li><a class="download" download="" href="#text">ローカルへ保存</a></li>
+				<li><span id="file" onclick="$('#file_input').click();">ローカルから読み込み</span><input id="file_input" style="display: none;" type="file"></li>
+				<li>クラウドへ保存</li>
+				<li>クラウドから読み込み</li>
+			</ul>
+		</li>
+		<li>
+			<a href="./usage.html" class="ajax"><i class="fa fa-code"></i></a>
+		</li>
+	</ul>
+</div>
+<div id="main">
+	<div id="wrap">
+		<%= render 'bcml/edit' %>
+	</div>
+</div>
