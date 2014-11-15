@@ -9,4 +9,8 @@ class BcmlController < ApplicationController
 		puts converted
 		render :text => converted
 	end
+
+	def ajax
+		render
+	end
 end

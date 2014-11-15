@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   post 'parse' => 'bcml#parse'
   get 'index' => 'bcml#index'
+  get 'ajax' => 'bcml#ajax'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

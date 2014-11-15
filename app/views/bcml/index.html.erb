@@ -20,7 +20,9 @@
 			</ul>
 		</li>
 		<li>
-			<a href="./usage.html" class="ajax"><i class="fa fa-code"></i></a>
+			<%= link_to :action => 'ajax', :remote => true do %>
+				<i class="fa fa-code"></i>
+			<% end %>
 		</li>
 	</ul>
 </div>
