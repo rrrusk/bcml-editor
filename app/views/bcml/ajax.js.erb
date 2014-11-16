@@ -1,1 +1,5 @@
-$('#wrap').html("<%=j render :partial => 'usage' %>");
+$('#wrap').html("<%=j render :partial => @template %>");
+if ("<%= @template %>" === "edit"){
+	$('.tabs').tab()
+	$.startCodeMirror('text')
+}

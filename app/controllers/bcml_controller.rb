@@ -11,6 +11,7 @@ class BcmlController < ApplicationController
 	end
 
 	def ajax
+		@template = params[:template]
 		render
 	end
 end

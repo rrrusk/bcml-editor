@@ -14,10 +14,29 @@ $.fn.menu = (config) ->
 	@
 
 $.fn.tab = (config) ->
+	mode = 'html'
 	tab = this
 	$(this).click ->
 		$(tab).removeClass "selected-tab"
 		$(this).addClass "selected-tab"
+
+	$('#pageview').click ->
+		console.log "www"
+		if mode == 'text'
+			mode = 'html'
+			result = $('#previewtext').text()
+			$('#previewtext').replaceWith('<div id="previewtext">'+result+'</div>')
+			@
+
+	$('#source').click ->
+		console.log "ttt"
+		if mode == 'html'
+			mode = 'text'
+			result = $('#previewtext').html()
+			$('#previewtext').replaceWith('<pre id="previewtext"></pre>')
+			$('#previewtext').text(result)
+			@
+
 	@
 
 $.fn.ajax = (config) ->
@@ -60,8 +79,8 @@ parseBcml = ->
 	)
 	@
 
-startCodeMirror = ->
-	editor = CodeMirror.fromTextArea(document.getElementById("text"),{
+$.startCodeMirror = (config) ->
+	editor = CodeMirror.fromTextArea(document.getElementById(config),{
 			mode: "bcml",
 			lineNumbers: true,
 			lineWrapping: true
@@ -72,28 +91,13 @@ startCodeMirror = ->
 		clearTimeout(timer)
 		timer = setTimeout(parseBcml, 500)
 	)
+	console.log "hello"
 	@
 
 $ ->
-	$('#pageview').click ->
-		if mode == 'text'
-			mode = 'html'
-			result = $('#previewtext').text()
-			$('#previewtext').replaceWith('<div id="previewtext">'+result+'</div>')
-			@
-
-	$('#source').click ->
-		if mode == 'html'
-			mode = 'text'
-			result = $('#previewtext').html()
-			$('#previewtext').replaceWith('<pre id="previewtext"></pre>')
-			$('#previewtext').text(result)
-			@
-
 	$('.nav').menu()
 	$('.tabs').tab()
-	$('.ajax').ajax('#wrap')
 	$('.download').download()
-	startCodeMirror()
+	$.startCodeMirror('text')
 	@
 	return
