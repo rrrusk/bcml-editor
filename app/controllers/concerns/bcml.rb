@@ -25,7 +25,7 @@ module Bcml
 
 		private
 		def comment
-			@@contents.gsub!(/^#{@@config.COMMENT[0]}.+?#{@@config.COMMENT[1]}$/m,"")
+			@@contents.gsub!(/(?<!\\)#{@@config.COMMENT[0]}.+?#{@@config.COMMENT[1]}(?!\\)/m,"")
 		end
 
 		def user_tag
