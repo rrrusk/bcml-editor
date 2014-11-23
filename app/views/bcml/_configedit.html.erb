@@ -1,8 +1,28 @@
 <textarea id="config"></textarea>
 <div id="preview">
 	<div id="tab">
-		<div class="tabs selected-tab" id="pageview">usage</div>
-		<div class="tabs" id="source">htmlコード</div>
+		<div class="tabs selected-tab" id="pageview">設定の意味</div>
 	</div>
-	<div id="previewtext"></div>
+	<div id="previewtext">
+		<h2>GENERAL</h2><p>bcmlの基本文法を変更します。</p>
+		<h3>symbol</h3><p>
+		1つ目にワンライナー記法のシンボル<br>
+		2つ目にマルチライナー記法の開始シンボル<br>
+		3つ目にマルチライナー記法の終了シンボル<br>
+		をとります。</p>
+		<h3>bracket</h3><p>
+		修飾部や特殊タグの引数を囲う括弧</p>
+		<h3>comment</h3><p>
+		コメントの開始シンボルと終了シンボル</p>
+		<h2>USERTAGS</h2><p>
+		bcmlのタグと修飾部をユーザー定義のタグとして利用できます。</p>
+		<h2>TAGS</h2><p>
+		htmlのタグで使用できるものを設定します。<br>
+		キーdisplayはインライン要素ならinlineブロック要素ならblockを値にします。</p>
+		<h2>QUALIFIERS</h2><p>
+		使える修飾子を設定します。&lt;qsub&gt;の部分に修飾部の引数が入ります。</p>
+		<h2>SPECIALTAGS</h2><p>
+		 使用できる特殊タグを設定します。<br>
+		</p>
+	</div>
 </div>
