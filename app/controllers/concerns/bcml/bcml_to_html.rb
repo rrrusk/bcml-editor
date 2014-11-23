@@ -1,8 +1,8 @@
 module Bcml
 	class BcmlToHtml < Bcml
 		def initialize()
-			oneliner
 			multiliner
+			oneliner
 		end
 
 		private

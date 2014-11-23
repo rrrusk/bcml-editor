@@ -21,7 +21,6 @@ $.fn.tab = (config) ->
 		$(this).addClass "selected-tab"
 
 	$('#pageview').click ->
-		console.log "www"
 		if mode == 'text'
 			mode = 'html'
 			result = $('#previewtext').text()
@@ -29,7 +28,6 @@ $.fn.tab = (config) ->
 			@
 
 	$('#source').click ->
-		console.log "ttt"
 		if mode == 'html'
 			mode = 'text'
 			result = $('#previewtext').html()
@@ -64,11 +62,11 @@ $.fn.download = (config) ->
 mode = 'html'
 parseBcml = ->
 	text = $('#text').val()
-	console.log(text)
 	$.post(
 		'/parse'
 		{
-			'text': text
+			'text': text,
+			'config': localStorage.config
 		}
 		(data)->
 			if mode == 'text'
@@ -91,7 +89,6 @@ $.startCodeMirror = (config) ->
 		clearTimeout(timer)
 		timer = setTimeout(parseBcml, 500)
 	)
-	console.log "hello"
 	@
 
 $ ->

@@ -1,5 +1,26 @@
 $('#wrap').html("<%=j render :partial => @template %>");
-if ("<%= @template %>" === "edit"){
-	$('.tabs').tab()
-	$.startCodeMirror('text')
-}
+
+<% if @template == "edit" then %>
+	$('.tabs').tab();
+	$.startCodeMirror('text');
+<%end%>
+
+<% if @template == "configedit" then %>
+	console.log(localStorage.config);
+	$('#config').val(localStorage.config);
+	function setLocalStorage(){
+		localStorage.config = $('#config').val();
+	};
+	editor = CodeMirror.fromTextArea(document.getElementById('config'),{
+			mode: "bcml",
+			lineNumbers: true,
+			lineWrapping: true
+		})
+	timer = ""
+	editor.on("change", function(){
+		editor.save();
+		clearTimeout(timer);
+		timer = setTimeout(setLocalStorage, 500);
+		console.log(localStorage.config);
+	})
+<% end %>
