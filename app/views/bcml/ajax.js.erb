@@ -12,7 +12,7 @@ $('#wrap').html("<%=j render :partial => @template %>");
 		localStorage.config = $('#config').val();
 	};
 	editor = CodeMirror.fromTextArea(document.getElementById('config'),{
-			mode: "bcml",
+			mode: "yaml",
 			lineNumbers: true,
 			lineWrapping: true
 		})
