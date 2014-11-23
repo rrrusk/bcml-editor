@@ -1,13 +1,13 @@
 module Bcml
 	class BcmlToHtml < Bcml
 		def initialize()
-			multiliner
 			oneliner
+			multiliner
 		end
 
 		private
 		def oneliner
-			convert(@@contents,/(?<origin>^[ \t]*(?<!\\)#{@@config.SYMBOL[0]}(?<prefix>[^\s]+)[ \t](?<subject>.+))/)
+			convert(@@contents,/(?<origin>^[ \t]*(?<!\\)#{@@config.SYMBOL[0]}(?<prefix>[a-zA-Z0-9][^\s]*)[ 　\t](?<subject>.+))/)
 		end
 
 		def multiliner
@@ -15,7 +15,7 @@ module Bcml
 			while re =~ @@contents
 				@@contents.gsub!(re) do |match|
 					match.gsub!(/(\A#{@@config.SYMBOL[1]}|#{@@config.SYMBOL[2]}\Z)/,"")
-					convert(match,/(?<origin>^(?<prefix>[^\s]+)\s(?<subject>.+))/m)
+					convert(match,/(?<origin>^(?<prefix>[a-zA-Z0-9][^\s]*)[　\s](?<subject>.+))/m)
 				end
 			end
 		end
