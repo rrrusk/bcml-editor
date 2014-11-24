@@ -9,9 +9,6 @@
 html,body{
 	height: 100%;
 }
-.nav{
-	list-style-type: none;
-}
 #sidebar{
 	background: #333;
 	color: #00F;
@@ -21,27 +18,45 @@ html,body{
 	position: fixed;
 	z-index: 100;
 }
-#sidebar > .nav > li{
+.nav{
+	list-style-type: none;
+
+	a{
+		text-decoration: none;
+	}
+
+	ul{
+		white-space: nowrap;
+		text-align: left;
+		display: none;
+		position: absolute;
+		top: -20px;
+		left: 100px;
+		list-style-type: none;
+		background: #333;
+		color: #00F;
+
+		li{
+			padding: 5px;
+		}
+	}
+
+	li:hover{
+		background: #111;
+	}
+}
+.nav > li{
 	width: 100px;
 	height: 100px;
 	text-align: center;
 	cursor: pointer;
 }
-.nav ul{
-	white-space: nowrap;
-	text-align: left;
-	display: none;
-	position: absolute;
-	top: -20px;
-	left: 100px;
-	list-style-type: none;
-	background: #333;
-	color: #00F;
-	padding: 5px;
-}
 .fa{
 	font-size: 70px;
 	color: #00F;
+	position: relative;
+	top: 50%;
+	margin-top: -37px;
 }
 #main{
 	width: calc(100% - 100px);
@@ -86,4 +101,18 @@ html,body{
 	overflow-y: scroll;
 	box-sizing: border-box;
 	padding: 8px;
+}
+svg path{
+	fill: #00F;
+}
+#loading{
+	position: fixed;
+	margin-top: -50px;
+	margin-left: -50px;
+	top: 50%;
+	left: 50%;
+	padding: 5px 10px;
+	border: #000 solid 1px;
+	border-radius: 5px;
+	background: #333;
 }

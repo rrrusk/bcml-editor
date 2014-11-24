@@ -4,7 +4,9 @@
 			<i class="fa fa-home"></i>
 		</li>
 		<li>
-			<i class="fa fa-pencil"></i>
+			<span>
+				<svg  version="1.1" id="pen" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" width="80" height="80" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve"></svg>
+			</span>
 			<ul>
 				<li>
 					<%= link_to 'テキストを編集', :action => 'ajax', :template => "edit", :remote => true %>
@@ -15,7 +17,9 @@
 			</ul>
 		</li>
 		<li>
-			<i class="fa fa-file-text-o"></i>
+			<span>
+				<svg  version="1.1" id="download" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" width="80" height="80" viewBox="0 0 24.848 31" style="overflow:visible;enable-background:new 0 0 24.848 31;" xml:space="preserve"></svg>
+			</span>
 			<ul>
 				<li><a class="download" download="" href="#text">ローカルへ保存</a></li>
 				<!--
@@ -27,7 +31,7 @@
 		</li>
 		<li>
 			<%= link_to :action => 'ajax', :template => "usage", :remote => true do %>
-				<i class="fa fa-code"></i>
+				<svg  version="1.1" id="code" width="80" height="80" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"></svg>
 			<% end %>
 		</li>
 	</ul>

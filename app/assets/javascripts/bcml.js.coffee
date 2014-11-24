@@ -92,6 +92,13 @@ $.startCodeMirror = (config) ->
 	@
 
 $ ->
+	$(document).ajaxSend (event, jqxhr, settings) ->
+		console.log settings
+		if settings.url is '/ajax?template=usage' or settings.url is '/ajax?template=configedit' or settings.url is '/ajax?template=edit'
+			$('#wrap').html("<div id='loading'><img src='assets/load.gif'/></div>")
+			console.log("ajax")
+		return
+
 	$('.nav').menu()
 	$('.tabs').tab()
 	$('.download').download()
