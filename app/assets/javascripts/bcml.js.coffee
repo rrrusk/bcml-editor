@@ -13,8 +13,8 @@ $.fn.menu = (config) ->
 		$("ul",this).hide()
 	@
 
+mode = 'html'
 $.fn.tab = (config) ->
-	mode = 'html'
 	tab = this
 	$(this).click ->
 		$(tab).removeClass "selected-tab"
@@ -23,16 +23,19 @@ $.fn.tab = (config) ->
 	$('#pageview').click ->
 		if mode == 'text'
 			mode = 'html'
-			result = $('#previewtext').text()
-			$('#previewtext').replaceWith('<div id="previewtext">'+result+'</div>')
+			result = $('#previewFrame').contents().find('#previewtext').text()
+			$('#previewFrame').replaceWith('<iframe srcdoc=\'<div id="previewtext">'+result.replace(/\'/g,"&#39;")+'</div>\' sandbox="allow-same-origin" frameborder=0 id="previewFrame"></iframe>')
+			$('#previewFrame').load ->
+				$('#previewFrame').contents().find('#previewtext').css("font-family","'Lucida Grande','Hiragino Kaku Gothic ProN',Meiryo, sans-serif")
 			@
 
 	$('#source').click ->
 		if mode == 'html'
 			mode = 'text'
-			result = $('#previewtext').html()
-			$('#previewtext').replaceWith('<pre id="previewtext"></pre>')
-			$('#previewtext').text(result)
+			result = $('#previewFrame').contents().find('#previewtext').html()
+			$('#previewFrame').contents().find('#previewtext').replaceWith('<pre id="previewtext"></pre>')
+			$('#previewFrame').contents().find('#previewtext').text(result)
+			$('#previewFrame').contents().find('#previewtext').css("font-family","'Lucida Grande','Hiragino Kaku Gothic ProN',Meiryo, sans-serif")
 			@
 
 	@
@@ -59,7 +62,7 @@ $.fn.download = (config) ->
 		$(this).attr 'href',window.URL.createObjectURL(blob)
 	@
 
-mode = 'html'
+#bcmlで変換した文字列をプレビューに挿入
 parseBcml = ->
 	text = $('#text').val()
 	$.post(
@@ -70,9 +73,13 @@ parseBcml = ->
 		}
 		(data)->
 			if mode == 'text'
-				$('#previewtext').text(data)
+				$('#previewFrame').contents().find('#previewtext').text(data)
+				$('#previewFrame').contents().find('#previewtext').css("font-family","'Lucida Grande','Hiragino Kaku Gothic ProN',Meiryo, sans-serif")
 			if mode == 'html'
-				$('#previewtext').html(data)
+				srcdoc = '\'<div id="previewtext">'+data.replace(/\'/g,"&#39;")+'</div>\''
+				$('#previewFrame').replaceWith('<iframe srcdoc='+srcdoc+' sandbox="allow-same-origin" frameborder=0 id="previewFrame"></iframe>')
+				$('#previewFrame').load ->
+					$('#previewFrame').contents().find('#previewtext').css("font-family","'Lucida Grande','Hiragino Kaku Gothic ProN',Meiryo, sans-serif")
 			@
 	)
 	@
@@ -93,10 +100,8 @@ $.startCodeMirror = (config) ->
 
 $ ->
 	$(document).ajaxSend (event, jqxhr, settings) ->
-		console.log settings
 		if settings.url is '/ajax?template=usage' or settings.url is '/ajax?template=configedit' or settings.url is '/ajax?template=edit'
 			$('#wrap').html("<div id='loading'><img src='assets/load.gif'/></div>")
-			console.log("ajax")
 		return
 
 	$('.nav').menu()

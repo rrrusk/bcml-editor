@@ -95,9 +95,11 @@ html,body{
 	border-bottom: #00F 4px solid;
 	box-sizing: border-box;
 }
-#previewtext{
+#previewFrame{
 	height: calc(100% - 56px);
 	width: 100%;
+}
+#previewtext{
 	overflow-y: scroll;
 	box-sizing: border-box;
 	padding: 8px;
